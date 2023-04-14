@@ -41,19 +41,6 @@ class AsyncMysqlTransport
      */
     public function send($text, $queueName, $params = null)
     {
-        // if ($params != null) {
-        //     $taskAlreadyExists = (new \yii\db\Query())
-        //         ->select('*')
-        //         ->from($this->tableName)
-        //         ->where(['status' => self::STATUS_NEW, 'queue' => self::getQueueKey($queueName), 'params' => $params])
-        //         ->limit(1)
-        //         ->exists();
-
-        //     if ($taskAlreadyExists) {
-        //         return false;
-        //     }
-        // }
-
         return $this->connection->createCommand()->insert(
             $this->tableName,
             [

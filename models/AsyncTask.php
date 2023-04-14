@@ -7,7 +7,6 @@ abstract class AsyncTask extends Model
 {
     static $queueName = 'tasks';
     public $message;
-    public $params = null;
 
     abstract public function execute();
 }

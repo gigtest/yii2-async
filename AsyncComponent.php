@@ -32,7 +32,7 @@ class AsyncComponent extends Component
     public function sendTask(AsyncTask $task)
     {
         if ($task->validate()) {
-            return $this->transport->send(serialize($task), $task::$queueName, $task::$params);
+            return $this->transport->send(serialize($task), $task::$queueName, $task->getAttributes());
         } else {
             throw new Exception(var_export($task->errors, true));
         }
