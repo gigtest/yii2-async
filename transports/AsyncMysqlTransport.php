@@ -36,15 +36,17 @@ class AsyncMysqlTransport
     /**
      * @param string $text
      * @param string $queueName
+     * @param json $params
      * @return integer index in queue
      */
-    public function send($text, $queueName)
+    public function send($text, $queueName, $params = null)
     {
         return $this->connection->createCommand()->insert(
             $this->tableName,
             [
                 'queue' => self::getQueueKey($queueName),
                 'data' => $text,
+                'params' => $params
             ]
         )->execute() == 1;
     }
